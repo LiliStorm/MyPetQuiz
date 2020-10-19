@@ -98,11 +98,9 @@ class MainActivity : AppCompatActivity() {
         answerButton4.setOnClickListener {
             checkAnswer(answerButton4.text.toString())
         }
-
     }
 
-    fun checkAnswer(answer: String){
-
+    fun checkAnswer(answer: String) {
         if(answer.toLowerCase() == quizQuestions.getRightAnswer(currentQuestionIndex).toLowerCase()) {
             score.rightAnswer()
         } else {
