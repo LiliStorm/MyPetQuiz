@@ -1,10 +1,10 @@
 package com.example.mypetquiz
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.MotionEvent
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import kotlin.random.Random
 
@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var answerButton2 : Button
     lateinit var answerButton3 : Button
     lateinit var answerButton4 : Button
+    lateinit var cuteRatsView : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,10 @@ class MainActivity : AppCompatActivity() {
         answerButton2 = findViewById(R.id.button2)
         answerButton3 = findViewById(R.id.button3)
         answerButton4 = findViewById(R.id.button4)
+        cuteRatsView = findViewById(R.id.cuteRatsView)
+
+        // TODO move this to new function and add more rat pictures
+        cuteRatsView.setImageResource(R.drawable.champagnerat)
 
         showQuestion()
         showAnswers()
@@ -63,21 +68,10 @@ class MainActivity : AppCompatActivity() {
             // store the list element which we want to shuffle, in a new variable
             val answerToShuffle = randomizedList[indexToShuffle]
 
-            // ### Example ###
-            // The first time we run this loop, if indexToShuffle was randomized to be 1, then...
-            //      indexToShuffle will be:      1
-            //      answerToShuffle will be:     quizQuestions.getWrongAnswer(0,0)
-            // ###
-
-            // remove the item from the list which is at the randomized index
             randomizedList.removeAt(indexToShuffle)
 
             // add the item we just removed back in the list, which will be added to the bottom of the list
             randomizedList.add(answerToShuffle)
-
-            // If the randomized list item used to be at randomizedList[1], it will now be at randomizedList[3].
-            // (added items go to the bottom of the list)
-            // Now we will repeat this randomized shuffle process by looping another 19 times.
         }
 
         return randomizedList
@@ -109,12 +103,14 @@ class MainActivity : AppCompatActivity() {
         nextQuestionOrResultScreen()
     }
 
-    // TODO Fortsätt här!
-
     fun nextQuestionOrResultScreen() {
         if(currentQuestionIndex+1 == quizQuestions.getQuizLength()) {
-            Log.d("Results", "Score!")
-        } else{
+            val intent = Intent(this, ResultScreen::class.java).apply {
+                putExtra("Points", score.points)
+                putExtra("Total", score.total)
+            }
+            startActivity(intent)
+        } else {
             currentQuestionIndex++
             showQuestion()
             showAnswers()

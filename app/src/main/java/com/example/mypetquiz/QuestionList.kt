@@ -3,7 +3,6 @@ package com.example.mypetquiz
 class QuestionList() {
     val listOfQuestionsAndAnswers = mutableListOf<Question>()
     init {
-        //Log.d("Hej", listOfQuestionsAndAnswers[0].wrongAnswers.toString())
     }
 
     fun initializeRatQuiz() {
