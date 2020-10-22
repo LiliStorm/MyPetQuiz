@@ -18,22 +18,26 @@ class MainActivity : AppCompatActivity() {
     lateinit var answerButton2 : Button
     lateinit var answerButton3 : Button
     lateinit var answerButton4 : Button
-    lateinit var cuteRatsView : ImageView
+    lateinit var cuteAnimalsView : ImageView
+    var quizChoice = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        quizQuestions.initializeRatQuiz()
         questionBox = findViewById(R.id.questionBox)
         answerButton1 = findViewById(R.id.button1)
         answerButton2 = findViewById(R.id.button2)
         answerButton3 = findViewById(R.id.button3)
         answerButton4 = findViewById(R.id.button4)
-        cuteRatsView = findViewById(R.id.cuteRatsView)
+        cuteAnimalsView = findViewById(R.id.cuteAnimals)
 
-        // TODO move this to new function and add more rat pictures
-        cuteRatsView.setImageResource(R.drawable.champagnerat)
+        quizChoice = intent.getIntExtra("Choice", 1)
+        if (quizChoice == 1) {
+            quizQuestions.initializeRatQuiz()
+        } else {
+            quizQuestions.initializeGuineaPigQuiz()
+        }
 
         showQuestion()
         showAnswers()
@@ -43,6 +47,9 @@ class MainActivity : AppCompatActivity() {
 
     fun showQuestion() {
         questionBox.text = quizQuestions.getQuestion(currentQuestionIndex)
+        // TODO add more rat pictures and randomize which picture is shown
+        cuteAnimalsView.setImageResource(R.drawable.champagnerat)
+        // cuteRatsView.setImageResource(R.drawable.)
 
     }
 
@@ -108,6 +115,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ResultScreen::class.java).apply {
                 putExtra("Points", score.points)
                 putExtra("Total", score.total)
+                putExtra("Choice", quizChoice)
             }
             startActivity(intent)
         } else {

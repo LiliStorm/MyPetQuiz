@@ -11,6 +11,8 @@ class ResultScreen : AppCompatActivity() {
     lateinit var quizScore: TextView
     lateinit var playAgainButton: Button
     lateinit var menuButton: Button
+    lateinit var yourResult: TextView
+    var quizChoice = 1
 
     var score = Score()
 
@@ -21,17 +23,20 @@ class ResultScreen : AppCompatActivity() {
         quizScore = findViewById(R.id.quizScore)
         playAgainButton = findViewById(R.id.playAgainButton)
         menuButton = findViewById(R.id.menuButton)
+        yourResult = findViewById(R.id.yourResult)
 
         score.total = intent.getIntExtra("Total", -1)
         score.points = intent.getIntExtra("Points", -1)
+        quizChoice = intent.getIntExtra("Choice", 1)
 
         quizScore.text = getScoreString()
 
         playAgainButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java).apply { }
+            val intent = Intent(this, MainActivity::class.java).apply {
+                putExtra("Choice", quizChoice)
+            }
             startActivity(intent)
         }
-
         menuButton.setOnClickListener {
             val intent = Intent(this, StartScreen::class.java).apply { }
             startActivity(intent)
@@ -39,7 +44,7 @@ class ResultScreen : AppCompatActivity() {
     }
 
     fun getScoreString(): String {
-        return "${score.points} correct answers out of ${score.total}"
+        return "${score.points} rätta svar av ${score.total} möjliga."
     }
 
 

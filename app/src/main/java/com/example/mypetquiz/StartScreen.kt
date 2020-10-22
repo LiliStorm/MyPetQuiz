@@ -4,20 +4,30 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 
 class StartScreen : AppCompatActivity() {
 
-    lateinit var startButton: Button
+    lateinit var startRatQuiz: Button
+    lateinit var startGuineaPigQuiz: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_screen)
 
-        startButton = findViewById(R.id.startButton)
+        startRatQuiz = findViewById(R.id.startRatQuiz)
+        startGuineaPigQuiz = findViewById(R.id.startGuineaPigQuiz)
 
-        startButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java).apply { }
+        startRatQuiz.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java).apply {
+                putExtra("Choice", 1)
+            }
+            startActivity(intent)
+        }
+
+        startGuineaPigQuiz.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java).apply {
+                putExtra("Choice", 2)
+            }
             startActivity(intent)
         }
     }

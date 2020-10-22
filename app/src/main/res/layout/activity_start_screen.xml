@@ -4,14 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#C4E6B1DF"
     tools:context=".StartScreen">
 
     <Button
-        android:id="@+id/startButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:text="Start Rat Quiz"
+        android:id="@+id/startGuineaPigQuiz"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/custom_rounded_corners"
+        android:backgroundTint="#99A188CD"
+        android:fontFamily="@font/didact_gothic"
+        android:text="Marsvin"
+        android:textAlignment="center"
+        android:textColor="#434345"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="360dp"
+        android:layout_height="222dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="341dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/guineapigs" />
+
+    <Button
+        android:id="@+id/startRatQuiz"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/custom_rounded_corners"
+        android:backgroundTint="#99A188CD"
+        android:fontFamily="@font/didact_gothic"
+        android:text="Råttor"
+        android:textColor="#434345"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

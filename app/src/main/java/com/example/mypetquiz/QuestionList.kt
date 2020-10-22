@@ -5,6 +5,27 @@ class QuestionList() {
     init {
     }
 
+    fun initializeGuineaPigQuiz() {
+        listOfQuestionsAndAnswers.add(
+            Question(
+                "Ungefär hur gammal blir ett marsvin vanligtvis?",
+                "2 år",
+                listOf("1 år", "3 år", "4 år")
+            )
+
+        )
+
+        listOfQuestionsAndAnswers.add(
+            Question(
+                "Hur många färger finns det på marsvin?",
+                "2",
+                listOf("5", "9", "3")
+            )
+
+        )
+
+    }
+
     fun initializeRatQuiz() {
         listOfQuestionsAndAnswers.add(
             Question(
@@ -26,8 +47,8 @@ class QuestionList() {
         listOfQuestionsAndAnswers.add(
             Question(
                 "Hur gammal blev världens äldsta råtta?",
-                "7 år",
-                listOf("5 är", "6 år", "8 år")
+                "4.5 år",
+                listOf("4 är", "5 år", "5.5 år")
             )
         )
 
