@@ -34,9 +34,17 @@ class MainActivity : AppCompatActivity() {
 
         quizChoice = intent.getIntExtra("Choice", 1)
         if (quizChoice == 1) {
-            quizQuestions.initializeRatQuiz()
-        } else {
+            quizQuestions.initializeHamsterQuiz()
+            cuteAnimalsView.setImageResource(R.drawable.hamster)
+        } else if (quizChoice == 2) {
+            quizQuestions.initializeRabbitQuiz()
+            cuteAnimalsView.setImageResource(R.drawable.rabbit)
+        } else if (quizChoice == 3) {
             quizQuestions.initializeGuineaPigQuiz()
+            cuteAnimalsView.setImageResource(R.drawable.guineapig)
+        } else if(quizChoice == 4) {
+            quizQuestions.initializeRatQuiz()
+            cuteAnimalsView.setImageResource(R.drawable.champagnerat)
         }
 
         showQuestion()
@@ -47,10 +55,6 @@ class MainActivity : AppCompatActivity() {
 
     fun showQuestion() {
         questionBox.text = quizQuestions.getQuestion(currentQuestionIndex)
-        // TODO add more rat pictures and randomize which picture is shown
-        cuteAnimalsView.setImageResource(R.drawable.champagnerat)
-        // cuteRatsView.setImageResource(R.drawable.)
-
     }
 
     fun showAnswers() {
